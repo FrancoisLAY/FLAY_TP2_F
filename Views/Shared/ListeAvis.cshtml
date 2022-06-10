@@ -1,0 +1,60 @@
+
+@model TPLOCAL1.Models.ListeAvis
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Liste des avis</title>
+    <link rel="stylesheet" href="~/ressources/Index.css" />
+    <link rel="stylesheet" href="~/ressources/Tableau.css" />
+
+</head>
+<body>
+    <img src="~/ressources/GroupeHN.png" class="image" alt="GroupeHN" />
+    <header>
+        <h1>Liste des avis</h1>
+
+    </header>
+    <nav>
+        @*Création du menu*@
+        <ul>
+            <li><a href="../Index">Accueil</a></li>
+            <li><a href="/Home/Index/Formulaire">Formulaire</a></li>
+        </ul>
+    </nav>
+    <section>
+        @*corps de page*@
+        <table>
+            <caption> Liste </caption>
+            <thead>
+                <tr>
+                    <td>Nom</td>
+                    <td>Prénom</td>
+                    <td>Avis donné</td>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Corps du tableau -->
+                @foreach (TPLOCAL1.Models.Avis avis in Model.GetAvis(@"D:\Tp\Tp2\FichierXML\DataAvis.xml"))
+                {
+                    <tr>
+                        <td>@avis.Nom</td>
+                        <td>@avis.Prenom</td>
+                        <td style="@((avis.AvisDonne) == "O" ? "background-color: green" : "background-color: red")">@avis.AvisDonne</td>
+
+                    </tr>
+
+                }
+
+            </tbody>
+        </table>
+    </section>
+
+
+</body>
+</html>

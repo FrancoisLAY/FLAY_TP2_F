@@ -1,0 +1,146 @@
+
+@model TPLOCAL1.Models.FormulaireModel
+@{
+    if (IsPost)
+    {
+        if (IsPost)
+        {
+            string nom = Request.Form["nom"];
+            string prenom = Request.Form["prenom"];
+            string sex = Request.Form["sex"];
+            string adresse = Request.Form["adresse"];
+            int cp = Request.Form["cp"].AsInt();
+            string ville = Request.Form["ville"];
+            string email = Request.Form["email"];
+            DateTime debF = Request.Form["debF"].AsDateTime();
+            string formation = Request.Form["formation"];
+            string avisC = Request.Form["avisC"];
+            string avisO = Request.Form["avisO"];
+
+            <div>
+                you entered: <br /><br />
+
+                Information personnelles<br />
+
+                Nom : @nom <br />
+                Prenom : @prenom <br />
+                Sexe : @sex <br />
+                Adresse: @adresse <br />
+                Code Postal: @cp <br />
+                Ville: @ville <br />
+                email: @email <br /><br />
+
+                Informations formation suivie<br />
+                Date début de formation: @debF <br />
+                Type de formation: @formation<br /><br />
+                Avis sur la formation <br />
+                Avis Cobol: @avisC<br />
+                Avis Objet: @avisO <br />
+            </div>
+        }
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Formulaire </title>
+    <link rel="stylesheet" href="~/ressources/Index.css" />
+    <link rel="stylesheet" href="~/ressources/Tableau.css" />
+</head>
+<body>
+    <img src="~/ressources/GroupeHN.png" class="image" alt="GroupeHN" />
+    <header>
+        <h1>Formulaire TP HN avis</h1>
+    </header>
+    <nav>
+        @*Création du menu*@
+        <ul>
+            <li><a href="../Index">Accueil</a></li>
+            <li>
+                <a href="/Home/Index/ListeAvis">Liste avis</a>
+            </li>
+        </ul>
+    </nav>
+    <form method="post" action="/Home/ValidationFormulaire">
+        @*tout mon formulaire, post: pour envoyer un max d'info et c'est plus sécurisé*@
+        <table>
+            <caption>Information personnelles</caption>
+            <tr>
+                <td><label for="nom">Nom</label></td>
+                <td><input type="text" name="nom" value="@Request.Form["nom"]" autofocus required /></td>
+                @*autofocus pour placer automatiquement le curseur*@
+                @*id permet de faire le lien avec le label*@
+            </tr>
+            <tr>
+                <td><label for="Prenom">Prenom</label></td>
+                <td><input type="text" name="prenom" value="@Request.Form["prenom"]" required /></td>
+            </tr>
+            <tr>
+                <td><label for="sex">Sexe</label></td>
+                <td>
+                    <select name="sex" value="@Request.Form["sex"]">
+                        <option value="select" selected>Selectionner un sexe</option> @*selected pour selectionner ppar défaut*@
+                        <option value="homme">Homme</option>
+                        <option value="femme">Femme</option>
+                        <option value="autre">Autre</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="adresse">Adresse</label></td>
+                <td><input type="text" name="adresse" value="@Request.Form["adresse"]" required /></td>
+            </tr>
+            <tr>
+                <td><label for="cp">Code postal</label></td>
+                <td><input type="number" name="cp" value="@Request.Form["cp"]" required maxlength="5" minlength="5" min="1000" max="99999" /></td>
+            </tr>
+            <tr>
+                <td><label for="ville">ville</label></td>
+                <td><input type="text" name="ville" value="@Request.Form["ville"]" required /></td>
+            </tr>
+            <tr>
+                <td><label for="email">Adresse mail </label></td>
+                <td><input type="email" name="email" value="@Request.Form["email"]" required /></td>
+            </tr>
+        </table>
+        <table>
+            <caption>Informations formation suivie </caption>
+            <tr>
+                <td><label for="debF">Date début formation </label></td>
+                <td><input type="date" name="debF" value="@Request.Form["debF"]" max="2021-01-01" required /></td>
+            </tr>
+            <tr>
+                <td><label for="formation">Type de formation</label></td>
+                <td>
+                    <select name="formation" value="@Request.Form["formation"]">
+                        <option value="select" selected>Sélectionner une formation</option>
+                        <option value="cobol">Formation Cobol</option>
+                        <option value="objet">Formation objet</option>
+                        <option value="Autre">Formation double compétence</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <table>
+            <caption>Avis sur la formation </caption>
+            <tr>
+                <td><label for="avisC">Formation Cobol </label></td>
+                <td><textarea name="avisC" value="@Request.Form["avisC"]"></textarea></td>
+            </tr>
+            <tr>
+                <td><label for="avisO">Formation Objet </label></td>
+                <td><textarea name="avisO" value="@Request.Form["avisO"]"></textarea></td>
+            </tr>
+        </table>
+        <input type="submit" value="Valider" />
+
+    </form>
+
+
+
+
+</body>
+</html>

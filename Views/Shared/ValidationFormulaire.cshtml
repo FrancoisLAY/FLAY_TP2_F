@@ -1,0 +1,86 @@
+@model TPLOCAL1.Models.FormulaireModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ValidationFormulaire</title>
+    <link rel="stylesheet" href="~/ressources/Index.css" />
+    <link rel="stylesheet" href="~/ressources/Tableau.css" />
+</head>
+<body>
+    <img src="~/ressources/GroupeHN.png" class="image" alt="GroupeHN" />
+    <header>
+        <h1>Page de Validations</h1>
+    </header>
+    <nav>
+        @*Création du menu*@
+        <ul>
+            <li><a href="/Home/Index">Accueil</a></li>
+            <li><a href="/Home/Index/ListeAvis">Liste avis</a></li>
+
+        </ul>
+    </nav>
+    <section>
+
+        <div>Votre formulaire à bien été pris en compte <br /><br /></div>
+
+        <table>
+            <caption>Information personnelles</caption>
+            <tr>
+                <td>Nom</td>
+                <td>@Model.nom</td>
+            </tr>
+            <tr>
+                <td>Prenom</td>
+                <td>@Model.prenom </td>
+            </tr>
+            <tr>
+                <td>sex</td>
+                <td>
+                    @Model.sex
+                </td>
+            </tr>
+            <tr>
+                <td>Adresse</td>
+                <td>@Model.adresse</td>
+            </tr>
+            <tr>
+                <td>Code postal</td>
+                <td>@Model.cp</td>
+            </tr>
+            <tr>
+                <td>ville</td>
+                <td>@Model.ville</td>
+            </tr>
+            <tr>
+                <td>Adresse mail</td>
+                <td>@Model.email/></td>
+            </tr>
+        </table><br /><br />
+        <table>
+            <caption>Informations formation suivie </caption>
+            <tr>
+                <td>Date début formation</td>
+                <td>@Model.debF</td>
+            </tr>
+            <tr>
+                <td>Type de formation</td>
+                <td>@Model.debF</td>
+            </tr>
+        </table><br /><br />
+        <table>
+            <caption>Avis sur la formation </caption>
+            <tr>
+                <td>Formation Cobol</td>
+                <td>@Model.avisC</td>
+            </tr>
+            <tr>
+                <td>Formation Objet</td>
+                <td>@Model.avisO</td>
+            </tr>
+        </table>
+    </section>
+</body>
+</html>

@@ -1,0 +1,11 @@
+table {
+    border: 1px solid purple;
+}
+
+td /*Toutes les cellules des tableaux... */ {
+    border: 1px solid black;
+}
+
+form {
+    margin-left: 170px;
+}

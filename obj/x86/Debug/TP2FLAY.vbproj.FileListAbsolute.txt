@@ -1,0 +1,2 @@
+D:\Tp\Tp2\obj\x86\Debug\TP2FLAY.vbproj.AssemblyReference.cache
+D:\Tp\Tp2\obj\x86\Debug\TP2FLAY.vbproj.CoreCompileInputs.cache
